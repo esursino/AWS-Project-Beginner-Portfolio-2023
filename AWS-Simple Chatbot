@@ -1,0 +1,28 @@
+AWS-Simple-Chatbot 🤖
+Overview: 🌟
+Wanna have a chatbot buddy? You're in the right place! This project uses AWS Lex to make a bot that helps set up appointments and checks the weather. Imagine a tiny robot in your computer—it's that cool!
+
+🛠 Tech Stuff We're Using:
+AWS Lex: This is where the bot lives. Think of it as its house!
+Node.js or Python: You choose which language you want for the backend code.
+Step-by-Step Guide Tip: Set a 5-minute timer for each step. It’ll help you concentrate!
+
+Step 1: Opening AWS Lex
+-Open your AWS Console in a browser.
+-Look for “Services” at the top and click it.
+-In the search bar, type “Lex” and click it.
+- Do this: Click 'Create' and choose 'Custom Bot'. Name your bot something fun. Save it.
+
+Step 2: Making Your Bot Smart
+-On your Lex bot page, look for a button that says '+ Add Intent' and click it.
+-You’ll see a spot to name your intent. Call it something like "ScheduleAppointment."
+-Do this: Add 'slots'. These are the questions your bot will ask. Make one for 'Date' and one for 'Time'.
+
+Step 3: Teaching Your Bot to Speak
+You’ll see a section called 'Sample Utterances'.
+👉 Do this: Type things like, "I want to schedule an appointment for [Date] at [Time]." This teaches the bot how to understand you. Save everything!
+
+Step 4: Test and Done!
+Click a big button usually at the top or bottom that says 'Build'.
+After it's done building, test your bot in the AWS Lex console.
+👉 Optional: If you're feeling extra, deploy your bot to places like Slack or build it into a web app.

@@ -1,2 +1,72 @@
+Project: My AWS Static Portfolio Website 🌐
+Brief Overview 🌟
+________________________________________
+Tools and Applications used.
+•	AWS S3: My go-to for storing website files.
+•	AWS Route 53: Where I configured my unique domain name.
+•	AWS CloudFront: The speed demon delivering my site worldwide
 
+The Play-by-Play Guide 📚
+Step 1: Bucket Brigade 🪣
+•	Open AWS Console: Head to Services -> S3.
+•	Create New Bucket: Press the 'Create bucket' option.
+•	Name It: Assign a unique name for your new storage unit.
+•	Select Region: Pick a nearby region for optimal speed.
+•	Commit: Click 'Next' until the 'Create' button shows up.
+
+--This code is used to creat the bucket--AWS CLI
+" aws s3api create-bucket --bucket unique-bucket-name --region select-region "
+
+Step 2: File Transfer 📦
+•	Open Your Bucket: Click on your shiny new bucket.
+•	Upload: Hit the 'Upload' button.
+•	Add Your Files: Drop in your HTML, CSS, and JS files.
+•	Send Them Up: Click 'Start Upload'.
+# CLI way of uploading files
+aws s3 cp your-local-file.html s3://unique-bucket-name/
+
+--This code is to create the bucket with--AWS CLI
+" aws s3api create-bucket --bucket unique-bucket-name --region select-region "
+
+Step 3: Make It Public 🛡️
+•	Head to Permissions: Open the bucket, then click the 'Permissions' tab.
+•	Policy Editor: You'll find a section called 'Bucket Policy'.
+•	Policy Up: Paste in your JSON bucket policy (and replace the bucket's name).
+•	Save Changes: Lock it in.
+-------------------------------------------------------------
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::unique-bucket-name/*"
+    }
+  ]
+}
+-------------------------------------------------------------------
+
+Step 4: The DNS Game 🌐
+•	Access Route 53: Navigate to Services -> Route 53.
+•	Create Zone: Initiate a new hosted zone and input your domain.
+•	Link 'Em Up: Create a DNS record to point to your bucket.
+
+---This code is used to set up DNS service in the CLI
+" aws route53 create-hosted-zone --name your-domain-name --caller-reference $(date) "
+
+
+Step 5: The Front of the Cloud ☁️
+Find CloudFront: Services -> CloudFront.
+New Distribution: Choose 'Create Distribution' -> 'Web'.
+Select Bucket: Your origin domain name should be your bucket.
+Security First: Opt to redirect HTTP to HTTPS.
+Activate: Click 'Create Distribution'.
+
+---This code is used for CloudFront setup
+
+" aws cloudfront create-distribution --origin-domain-name uniquebucketname.s3.amazonaws.com "
+
+And there you have it! My beginner's journey in setting up an AWS-hosted static portfolio website.
 

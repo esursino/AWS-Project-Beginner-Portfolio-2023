@@ -1,0 +1,55 @@
+Project 7: Host a WordPress Site on AWS EC2 🌐
+Brief Overview 🌟
+Set your foot into AWS EC2 by hosting your very own WordPress website. You'll get familiar with launching EC2 instances, setting up a web server, and integrating it with RDS to hold your WordPress database.
+
+Tools and Applications used 🛠️
+•	AWS EC2: For running the WordPress server.
+•	AWS RDS: To set up a database for WordPress.
+The Play-by-Play Guide 📚
+
+Step 1: EC2 Setup 🖥️
+•	Open AWS Console: Navigate to Services -> EC2.
+•	Launch New Instance: Hit that 'Launch Instance' button.
+•	Select OS: Choose an Amazon Linux 2 AMI.
+•	Instance Type: Go for t2.micro; it's eligible for the Free Tier.
+•	Review and Launch: Click 'Review and Launch', then 'Launch'.
+
+-- AWS CLI to launch EC2 --
+
+CSS  code
+( aws ec2 run-instances --image-id ami-abcdef123 --count 1 --instance-type t2.micro --key-name YourKeyName  )
+
+Step 2: Install Apache and PHP 🛠️
+•	SSH into EC2: Open your terminal and SSH into your instance.
+Java Code
+
+( ssh -i "YourKeyName.pem" ec2-user@your-EC2-public-IP )
+
+•	Update Packages: Run sudo yum update.
+•	Install Apache: sudo yum install httpd.
+•	Start Apache: sudo systemctl start httpd.
+•	Install PHP: sudo amazon-linux-extras install -y php7.2.
+
+Step 3: RDS Setup 📚
+•	Open AWS Console: Services -> RDS.
+•	Launch DB: Click 'Create database'.
+•	Choose Engine: Select MySQL.
+•	Configure: Choose Free tier, then set username and password.
+•	Create: Hit that 'Create database' button.
+-- AWS CLI for RDS --
+
+CSS Code 
+ ( aws rds create-db-instance --db-name YourDBName --db-instance-identifier YourInstanceIdentifier --engine MySQL --master-username YourMasterUsername --master-user-password YourPassword --allocated-storage 20 --db-instance-class db.t2.micro --vpc-security-group-ids your-security-group-id )
+
+Step 4: Connect EC2 and RDS 🔗
+•	Modify wp-config: SSH into EC2, navigate to WordPress folder, and edit wp-config.php.
+
+SQL Code Insert 
+define('DB_NAME', 'YourDBName'); 
+define('DB_USER', 'YourMasterUsername'); 
+define('DB_PASSWORD', 'YourPassword');
+ define('DB_HOST', 'YourRDSHost'); 
+
+Step 5: Test WordPress 🎉
+•	Access WordPress: Open your web browser and go to http://your-EC2-public-IP/wordpress.
+•	Follow Setup: Complete the WordPress installation wizard.

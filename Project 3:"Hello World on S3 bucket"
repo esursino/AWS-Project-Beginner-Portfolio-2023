@@ -4,35 +4,63 @@ Objective: We will create an S# bucket with hosting HTML file to display hello w
 
 "Notes":For anyone who has never used AWS to be scared to to get your hands dirty and learn something new :)
 
-1.	AWS Console Login
---Open your web browser and go to the AWS Management Console.
---Login with your AWS credentials.
+Project 3: Hello World with AWS EC2 🌍
+Brief Overview 🌟
+________________________________________
+We're gonna launch a basic "Hello, World!" web application on an EC2 instance.
+Tools and Applications used 🛠️
+•	AWS EC2: Virtual machine to host your web app.
+•	AWS Security Groups: To define accessibility rules.
+•	SSH: For secure shell access to your instance.
+The Play-by-Play Guide 📚
 
-2. Navigate to S3
---In the "Find Services" search bar, type "S3" and click on it to open the S3 dashboard.
+Step 1: Get to EC2 🖥️
+1.Open AWS Console: Navigate to Services -> EC2.
+2.Launch Instance: Click the 'Launch Instance' button.
+3.Select AMI: Choose a simple Amazon Machine Image (AMI), like Amazon Linux 2.
 
-3.	Create S3 Bucket
---Click on the orange "Create bucket" button.
---Name your bucket something unique and select a region.
---Click "Create" at the bottom.
+Step 2: Instance Specs 📋
+1.Instance Type: Stick with the free tier eligible t2.micro.
+2.Review and Launch: Don't sweat the other settings for now. Click 'Review and Launch'.
 
-4.	Bucket Permissions
---Click on the bucket you just created.
---Navigate to the "Permissions" tab.
---Scroll down to "Bucket Policy" and add a policy to make the bucket public (Remember, making buckets public is risky in real-world scenarios).
+Step 3: Security Squad 🛡️
+1.	Create New Security Group: Make a new group.
+2.	SSH Rule: Add a rule for SSH (port 22) for your IP.
+3.	HTTP Rule: Add another rule for HTTP (port 80) to be accessible to the world.
 
-5.	Creating HTML File
---Open a text editor on your computer.
---Type <h1>Hello, World!</h1> and save the file as index.html.
+Step 4: Key Pair 🔐
+1.Create New Key Pair: Save this. You'll need it to SSH into your instance.
+2.Launch Instance: Click it!
 
-6.	Upload HTML to S3
---Go back to your S3 bucket and click the "Upload" button.
---Drag and drop your index.html file and click "Upload".
+Step 5: SSH & Setup 🛠️
+1.SSH into EC2: Use your key pair and public IP to SSH.
 
-7.	Access and Test
---Once the file is uploaded, click on its name.
---On the next screen, click "Object URL". This should open a new tab displaying your "Hello, World!" message.
+Bash Code
 
-8.	GitHub Documentation
---Create a README.md file in your GitHub repo for this project.
---Document all these steps in detail.
+( ssh -i "your-key.pem" ec2-user@your-EC2-public-IP )
+
+2.Update Packages: Update the server packages.
+Bash Code
+
+( sudo yum update )
+
+3.Install Web Server: Install Apache.
+Bash Code 
+
+( sudo yum install httpd )
+
+4.Start Service: Start the Apache service.
+
+Base Code 
+
+( sudo service httpd start )
+
+Step 6: Hello, World! 🌍
+
+1.	Add HTML File: Create a simple HTML file.
+Bash Code 
+
+( echo "Hello, World!" > /var/www/html/index.html )
+
+2.Open Browser: Open your browser and type in your EC2's public IP. You should see "Hello, World!"
+And bam! You've got yourself a simple web server running on EC2. 🎉

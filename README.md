@@ -5,6 +5,8 @@ Hey there! Thanks for stopping by my GitHub repository. If you're new to AWS or 
 Don't Be Afraid to Dive In 🌊
 I know how intimidating it can be to start something new. The sheer volume of information out there can feel overwhelming. But remember: every expert was once a beginner. Don't let fear hold you back from learning and growing. This portfolio is a safe space for you to explore, make mistakes, and learn—because that's what this journey is all about.
 
+I have ADHD and have had it since time has started - If I can do this than you can too.
+
 "The expert at anything was once a beginner." – Helen Hayes
 So what are you waiting for? Roll up your sleeves and dive into these projects. Each one is broken down into super-detailed steps, so you won't get lost. And if you have questions or get stuck somewhere, feel free to reach out. We're all in this together.
 

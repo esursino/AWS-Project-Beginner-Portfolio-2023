@@ -1,0 +1,39 @@
+Project 6: Simple Notification Service (SNS) 📬
+Brief Overview 🌟 Unlock the power of real-time communication using AWS SNS (Simple Notification Service) in this exciting beginner-level project. We'll set up a cloud-based messaging system that integrates with AWS Lambda, allowing you to send notifications straight to your inbox. A must-try for anyone looking to explore cloud-based messaging and event-driven architectures!
+________________________________________
+In this project, we'll use AWS SNS to send a simple notification. Great way to get started with cloud-based messaging.
+Tools and Applications used 🛠️
+•	AWS SNS: For sending notifications.
+•	AWS Lambda: To trigger the SNS.
+The Play-by-Play Guide 📚
+
+Step 1: SNS Central 🌐
+1.	Open AWS Console: Navigate to Services -> SNS.
+2.	Create Topic: Make a new topic.
+
+Step 2: Subscription 📝
+1.	Create Subscription: Choose your protocol, like Email.
+2.	Endpoint: Enter the email where you want to receive notifications.
+
+Step 3: Lambda Trigger 🖥️
+1.	Go Back to Lambda: Remember that Lambda function? Let's modify it.
+2.	Add SNS Trigger: In the Lambda function, import AWS SDK and add SNS publish code.
+
+--Javascript Code
+const AWS = require('aws-sdk');
+const sns = new AWS.SNS(); 
+
+exports.handler = async (event) => { const params = {
+Message: 'Hello from SNS!', 
+
+TopicArn: 'your-sns-topic-arn' 
+
+}; 
+
+return sns.publish(params).promise(); 
+}; 
+
+Step 4: Test & Receive 🧪
+1.	Invoke Lambda: Run your Lambda function.
+2.	Check Email: You should receive a notification email.
+And there you go! 

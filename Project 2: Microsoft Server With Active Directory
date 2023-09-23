@@ -1,1 +1,79 @@
 
+Project 5: Setup Microsoft Server with Active Directory on AWS
+
+Objective:The goal of this project is to empower you to deploy and configure a Microsoft Windows Server with Active Directory on AWS. By the end of this tutorial, you'll not only have hands-on experience with AWS EC2 but also with managing a Windows Server environment. You'll learn how to:
+
+•	Launch a Windows instance in AWS.
+•	Set up security measures for remote access.
+•	Install and configure Active Directory Domain Services.
+•	Manage user accounts and access within your organization for up to 20 users.
+Whether you're a student like me or , an IT professional looking to expand your skillset, or someone interested in cloud computing and network management, this project is your stepping stone to mastering AWS and Active Directory.
+
+
+Prerequisites for Project:
+•	An AWS account
+•	A Remote Desktop client to connect to your Windows Server
+________________________________________
+Detailed Steps:
+1.	Login to AWS Console
+--	Navigate to the AWS Management Console and log in. Make sure you're in the region where you want to deploy your resources.
+
+2.	Go to EC2 Dashboard
+--In the "Find Services" bar, type in "EC2" and click on it to enter the EC2 dashboard.
+
+3.	Initiate Instance Launch
+•	Click on the "Launch Instance" button to create a new virtual machine.
+
+4.	Choose AMI
+•	In the "Choose an Amazon Machine Image" section, filter by "Windows" and select a Microsoft Windows Server AMI.
+
+5.	Select Instance Type
+•	In the "Choose an Instance Type" section, select t2.large or any other instance type that meets your needs.
+
+6.	Configure Instance
+•	Click "Next: Configure Instance Details."
+•	Leave most settings as their default but make note of your VPC and Subnet settings.
+
+7.	Storage Configuration
+•	Click "Next: Add Storage" and add any additional storage if needed. 30-50GB should be fine for this project.
+
+8.	Configure Security Group
+•	Go to "Next: Configure Security Group."
+•	Create a new Security Group, and add a rule for RDP with port range 3389. Make sure the source is set to "My IP" to restrict access to your own IP address.
+
+9.	Launch Instance
+•	Review your settings and click "Launch" to create the instance.
+
+10.	Create and Download Key Pair
+•	You'll be prompted to create a new key pair. Name it, download it, and keep it in a secure location.
+
+11.	Retrieve Windows Password
+•	After the instance is running, select it in the EC2 dashboard, click on "Actions," and then "Get Windows Password." Use your downloaded key pair to decrypt the password.
+
+12.	Connect via RDP
+•	Use your Remote Desktop client to connect to the instance using the public IP address provided in the EC2 dashboard and the decrypted Windows password.
+
+13.	Install Active Directory
+•	Once logged in, open Server Manager.
+•	Go to "Add roles and features" and select the "Active Directory Domain Services" role. Install it.
+
+14.	Promote to Domain Controller
+•	After installation is complete, go back to Server Manager.
+•	Click on the warning icon, then click "Promote this server to a domain controller."
+•	Follow the wizard to create a new forest and domain. Set a DSRM (Directory Services Restore Mode) password when prompted.
+
+15.	Create User Accounts
+•	After the server restarts and you're logged in as the domain administrator, go to "Server Manager."
+•	Navigate to "Tools" > "Active Directory Users and Computers."
+•	Right-click on the "Users" folder under your domain and choose "New" > "User."
+•	Create 20 user accounts, setting usernames and strong passwords for each.
+
+16.	Access Management
+•	While still in "Active Directory Users and Computers," you can organize your users into Organizational Units (OUs) and apply group policies for access management.
+
+17.	Testing
+•	Use a different computer or virtual machine to join the domain and log in with one of the new user accounts to confirm everything is working as expected.
+
+18.	Document on GitHub
+•	Create a new README.md file in a GitHub repo dedicated to this project.
+•	Thoroughly document each step, including screenshots if possible, so that others can replicate your setup without any hiccups.

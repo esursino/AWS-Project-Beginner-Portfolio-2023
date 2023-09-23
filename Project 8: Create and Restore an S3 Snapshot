@@ -1,0 +1,44 @@
+
+Project 8: Create and Restore an S3 Snapshot 📸
+Brief Overview 🌟
+Snapshots are key for data integrity and recovery. In this project, you'll learn how to create an S3 snapshot and restore it, making you a wizard at data recovery on AWS.
+
+Tools and Applications used 🛠️
+•	AWS S3: To hold the data we'll be backing up.
+•	AWS CLI: For command-line snapshot creation and restoration.
+The Play-by-Play Guide 📚
+
+Step 1: Pre-Snapshot Setup 🛠️
+•	Open AWS Console: Navigate to Services -> S3.
+•	Create New Bucket: Hit 'Create bucket'.
+•	Bucket Name: Assign a unique name.
+•	Commit: Click 'Create'.
+-- AWS CLI to create the bucket --
+--CSS Code
+( aws s3api create-bucket --bucket unique-bucket-name --region select-region )
+
+Step 2: Upload Sample Data 📤
+•	Open Bucket: Go to your newly created bucket.
+•	Upload Files: Click 'Upload' and put in some test files.
+-- AWS CLI to upload files --
+
+--Bash Code 
+( aws s3 cp your-local-file.txt s3://unique-bucket-name/ )
+S
+
+Step 3: Take a Snapshot 📸
+•	Open AWS CLI: Navigate to your command prompt.
+•	Run Command: To snapshot your S3 bucket.
+
+Bash Code 
+( aws s3 sync s3://unique-bucket-name snapshot-folder/ )
+
+Step 4: Restore from Snapshot 🔄
+•	Delete Data: Remove a file from your S3 bucket (make sure you have it in your snapshot-folder!).
+•	Run Command: To restore deleted data.
+Bash Code 
+( aws s3 sync snapshot-folder/ s3://unique-bucket-name )
+
+Step 5: Verify Restoration ✅
+•	Open S3 Console: Head back to the S3 Console.
+•	Check Files: Make sure the file you deleted is back in place.
